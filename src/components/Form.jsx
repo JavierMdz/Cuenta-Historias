@@ -10,6 +10,8 @@ function Form() {
     const [password,setPassword]=useState("");
     const [date,setDate]=useState("");
     const [gender,setGender]=useState(false);
+    const [error,setError]=useState(false);
+    const [succes,setSucces]=useState(false);
   
     const envio=(ev)=>{
         ev.preventDefault();
@@ -21,13 +23,15 @@ function Form() {
         birthdate:date,
         id_type_user:1
         }).then(response => {
-        console.log(response);
-        setName("");
+            setName("");
+            setError(false);
+            setSucces(true);
             setPassword("");
             setEmail("");
             setDate("");  
         }).catch(e => {
-            console.log(e);
+            setError(true);
+            setSucces(false);
             setName("");
             setPassword("");
             setEmail("");
@@ -35,7 +39,7 @@ function Form() {
         });
     }
 
-
+    
     return (    
         <div className="container mt-5">
         <form onSubmit={(ev)=>envio(ev)}>
@@ -47,7 +51,8 @@ function Form() {
                     className="form-control" 
                     id="username" 
                     placeholder="nombre de usuario"
-                    value={name}/>
+                    value={name}
+                    required/>
             </div>
             <div className="form-group ">
                     <label htmlFor="Email">Email</label>
@@ -57,7 +62,8 @@ function Form() {
                         className="form-control" 
                         id="Email" 
                         placeholder="Email"
-                        value={email}/>
+                        value={email}
+                        required/>
             </div>
             <div className="form-group">
                     <label htmlFor="Password">Contraseña</label>
@@ -67,7 +73,9 @@ function Form() {
                         className="form-control" 
                         id="Password" 
                         placeholder="Password"
-                        value={password}/>
+                        value={password}
+                        pattern=".{5,10}"
+                        title="contraseña con longitud de 5-10 caracteres"/>
             </div>
             <div className="form-group">
             <label className="mr-2" htmlFor="Hombre">Hombre: </label>
@@ -104,6 +112,12 @@ function Form() {
                 <button type="submit" className="btn btn-primary">Registrarse</button>
             </div>
         </form>
+        <> 
+            {error && <div className="alert alert-danger mt-4" role="alert">Error en su registro intentelo otra vez</div>}
+        </>
+        <> 
+            {succes && <div className="alert alert-success mt-4" role="alert">Registro con exito, verifique su correo</div>}
+        </>
         </div>
     );
   }

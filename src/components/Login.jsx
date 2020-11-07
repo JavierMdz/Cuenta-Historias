@@ -1,17 +1,37 @@
 import React,{useState}from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import axios from 'axios';
+import {Context} from "./Home.jsx";
+import { useContext } from 'react';
+import {Redirect} from "react-router-dom";
 
 function Login(){
+    const context=useContext(Context);
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const [error,setError]=useState(false);
+    const [succes,setSucces]=useState(false);
 
     const envio=(ev)=>{
         ev.preventDefault();
-        console.log(email,password)
-        setEmail("");
-        setPassword("");
+        axios.post("https://historias-01.herokuapp.com/auth/signin", {
+            email:email,
+            password:password,
+        }).then(response => {
+            setPassword("");
+            setEmail("");
+            setError(false);
+            setSucces(true);
+            console.log(response);
+            context.setLogin(true);
+            localStorage.setItem('userData',JSON.stringify(response.data.userDb));
+            localStorage.setItem('token',response.data.jwt);
+        }).catch(e => {
+            setError(true);
+            setSucces(false);
+            setPassword("");
+            setEmail("");
+        });
     }
 
 
@@ -41,8 +61,15 @@ function Login(){
                     onChange={(ev)=>setPassword(ev.target.value)}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" >iniciar sesion</button>
             </form>
+            <> 
+                {error && <div className="alert alert-danger mt-4" role="alert"> intentelo otra vez</div>}
+            </>
+            <> 
+                {succes && <div className="alert alert-success mt-4" role="alert"><Redirect to="/"/>Inicio de sesion correcto</div>}
+                
+            </>
         </div>
     )
 }
