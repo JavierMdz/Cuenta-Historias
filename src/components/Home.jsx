@@ -38,11 +38,15 @@ const Home=()=>{
                             {!login&&<p>porfavor incia sesion</p>}
                             {login && <Profile/>}
                         </Route>
+                        <Route path="/edit">
+                            <div className="container mt-2">
+                                <h1>Aqui se van a crear tus historias</h1>
+                            </div>
+                        </Route>
                         <Route path="/">
                             {!login&&<p>JAVIER AQUI VA EL COMPONENTE DE EL HOME</p>}
                             {login && <span>sesion iniciada</span>}
                         </Route>
-                        
                     </Switch>
                 </div>
             </Router>

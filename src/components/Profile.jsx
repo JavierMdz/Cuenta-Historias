@@ -15,7 +15,6 @@ const Profile=()=>{
             }});
         const  user=await data.json();
         setdatos(user);
-        console.log(user);
     }
 
 
@@ -29,6 +28,7 @@ const Profile=()=>{
         if(datos.length==0){
             return (<div className="container m-5">
                         <h1>No tienes historias por el momento</h1>
+                        <button className="btn btn-info mt-3" onClick={()=>window.location.replace("/edit")}>Crear historia</button>
                     </div>)
         }else{
             return (<div>    
@@ -57,6 +57,7 @@ const Profile=()=>{
                                     ))}
                                 </tbody>
                             </table>
+                            <button className="btn btn-info mt-3" onClick={()=>window.location.replace("/edit")}>Crear historia</button>
                         </div>
                     </div>)
         }
