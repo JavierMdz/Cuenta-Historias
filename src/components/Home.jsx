@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from './Form.jsx';
 import Login from './Login.jsx'
 import Nav from './Nav.jsx';
+import Editor from './Editor.jsx';
 import Profile from './Profile.jsx';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import { useState } from 'react';
@@ -40,7 +41,7 @@ const Home=()=>{
                         </Route>
                         <Route path="/edit">
                             <div className="container mt-2">
-                                <h1>Aqui se van a crear tus historias</h1>
+                                <Editor/>
                             </div>
                         </Route>
                         <Route path="/">
