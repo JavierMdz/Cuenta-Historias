@@ -7,7 +7,9 @@ import Creador from './Creador.jsx';
 import Profile from './Profile.jsx';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import { useState } from 'react';
-  
+import FalseHome from './FalseHome.jsx';
+import TrueHome from './TrueHome.jsx';
+import Footer from './Footer.jsx';
 export const Context=React.createContext();
 
 const Home=()=>{
@@ -45,10 +47,11 @@ const Home=()=>{
                             </div>
                         </Route>
                         <Route path="/">
-                            {!login&&<p>JAVIER AQUI VA EL COMPONENTE DE EL HOME</p>}
-                            {login && <span>sesion iniciada</span>}
+                            {!login&&<FalseHome/>}
+                            {login &&<TrueHome/>}
                         </Route>
                     </Switch>
+                    <Footer/>
                 </div>
             </Router>
         </Context.Provider>

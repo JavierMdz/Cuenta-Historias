@@ -69,6 +69,15 @@ function Login(){
                 {succes && <div className="alert alert-success mt-4" role="alert"><Redirect to="/"/>Inicio de sesion correcto</div>}
                 
             </>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            
         </div>
     )
 }
