@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from './Form.jsx';
 import Login from './Login.jsx'
 import Nav from './Nav.jsx';
-import Editor from './Editor.jsx';
+import Creador from './Creador.jsx';
 import Profile from './Profile.jsx';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import { useState } from 'react';
@@ -41,7 +41,7 @@ const Home=()=>{
                         </Route>
                         <Route path="/edit">
                             <div className="container mt-2">
-                                <Editor/>
+                                <Creador/>
                             </div>
                         </Route>
                         <Route path="/">

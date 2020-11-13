@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import { useContext } from 'react';
 import { Context } from './Home';
 
-const Nav=()=>{
+const Nav = ()=> {
     const context=useContext(Context);
     const [datos,setDatos]=useState(null);
 

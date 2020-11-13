@@ -22,7 +22,6 @@ function Login(){
             setEmail("");
             setError(false);
             setSucces(true);
-            console.log(response);
             context.setLogin(true);
             localStorage.setItem('userData',JSON.stringify(response.data.userDb));
             localStorage.setItem('token',response.data.jwt);
